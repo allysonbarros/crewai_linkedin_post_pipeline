@@ -1,0 +1,10 @@
+crewai
+crewai-tools
+groq
+langchain
+langchain-community
+langchain-groq
+requests
+linkedin-api
+ipython
+python-dotenv
