@@ -11,7 +11,8 @@ class LinkedInContentCrew:
         self.tavily_api_key = os.getenv('TAVILY_API_KEY')
         self.groq_api_key = os.getenv('GROQ_API_KEY')
         self.llm = LLM(
-            model="groq/deepseek-r1-distill-llama-70b",
+            model="ollama/deepseek-r1",
+            base_url="http://localhost:11434"
         )
 
        

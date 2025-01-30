@@ -1,16 +1,12 @@
-from crewai import Agent
-from langchain_groq import ChatGroq
+from crewai import Agent, LLM
 from langchain.tools import Tool
 
 class WriterAgent:
     def __init__(self, groq_api_key, llm):
-        self.groq_llm = ChatGroq(
-            temperature=0.7,
-            model_name="llama-3.1-8b-instant",
-            groq_api_key=groq_api_key,
-            max_tokens=1000
+        self.llm = LLM(
+            model="ollama/gemma2:2b",
+            base_url="http://localhost:11434"
         )
-        self.llm = llm
 
     def create(self):
         writing_tool = Tool(
@@ -56,7 +52,7 @@ class WriterAgent:
         - Format with appropriate line breaks
         - Make it professional and thought-provoking"""
 
-        response = await self.groq_llm.ainvoke(prompt)
+        response = self.llm(prompt)
         print("\nGenerated LinkedIn post:")
         print(response.content)
         return response.content 

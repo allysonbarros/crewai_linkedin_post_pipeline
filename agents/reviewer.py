@@ -3,13 +3,10 @@ from langchain.tools import Tool
 
 class ReviewerAgent:
     def __init__(self, groq_api_key, llm):
-        # self.groq_llm = ChatGroq(
-        #     temperature=0.0,
-        #     model_name="mixtral-8x7b-32768",
-        #     groq_api_key=groq_api_key,
-        #     max_tokens=1000
-        # )
-        self.llm = LLM("groq/mixtral-8x7b-32768")
+        self.llm = LLM(
+            model="ollama/gemma2:2b",
+            base_url="http://localhost:11434"
+        )
 
     def create(self):
         review_tool = Tool(
